@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: aks-helloworld
+  labels:
+    name: aks-helloworld
+spec:
+  containers:
+  - name: aks-helloworld
+    image: mcr.microsoft.com/azuredocs/aks-helloworld:v1
+    ports:
+    - containerPort: 80
+    env:
+    - name: TITLE
+      value: "Pod example"
