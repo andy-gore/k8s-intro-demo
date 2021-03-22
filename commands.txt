@@ -1,0 +1,10 @@
+Walkthrough
+------------
+
+Deploy pod
+
+kubectl get pods -o wide 
+
+kubectl port-forward aks-helloworld 7000:80
+
+kubectl get pods --watch
