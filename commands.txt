@@ -1,0 +1,17 @@
+Walkthrough
+------------
+
+Deploy pod
+----------
+kubectl get pods -o wide 
+
+kubectl port-forward aks-helloworld 7000:80
+
+Deploy deployment
+------------------
+kubectl get pods --watch
+
+Deploy service
+---------------
+
+kubectl get endpoints
