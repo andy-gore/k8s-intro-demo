@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aks-autoscale-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: aks-autoscale-demo
+  template:
+    metadata:
+      labels:
+        app: aks-autoscale-demo
+    spec:
+      containers:
+      - name: aks-autoscale-demo
+        image: mcr.microsoft.com/azuredocs/aks-helloworld:v1
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            cpu: 256m
+          limits:
+            cpu: 500m
+        env:
+        - name: TITLE
+          value: "Auto scale"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: aks-autoscaler  
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+  selector:
+    app: aks-autoscale-demo
